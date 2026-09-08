@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Maruti Textiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --midnight: #18324A;
+      --ivory: #FAF8F3;
+      --terracotta: #B64A3A;
+      --mist: #DDE8EE;
+      --sage: #AEB9B1;
+      --gold: #C9A66B;
+      --ink: #18324A;
+      --ink-2: #AEB9B1;
+      --line: rgba(24, 50, 74, 0.14);
+      --line-2: rgba(24, 50, 74, 0.28);
+      --shadow-sm: 0 8px 24px -16px rgba(24,50,74,.25);
+      --shadow: 0 24px 60px -28px rgba(24,50,74,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(250,248,243,.82);
+      backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 126px; height: 76px; object-fit: cover; object-position: center; }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      color: var(--midnight);
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--midnight);
+    }
+    .nav-links a { position: relative; padding: 6px 0; }
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 2px; background: var(--terracotta); border-radius: 2px;
+    }
+    .nav-cta {
+      background: var(--midnight);
+      color: var(--ivory);
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 0;
+      cursor: pointer;
+      letter-spacing: .02em;
+    }
+    .nav-cta:hover { background: var(--terracotta); }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--midnight), rgba(24,50,74,.96));
+      color: var(--ivory);
+      padding: 92px 0 72px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 48px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11.5px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.1;
+      margin: 20px 0 18px;
+      letter-spacing: -.015em;
+      font-weight: 600;
+    }
+    .hero h1 span { color: var(--terracotta); }
+    .hero p.lead {
+      font-size: 17px;
+      color: rgba(250,248,243,.82);
+      max-width: 540px;
+      margin: 0;
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: 0;
+      transition: transform .25s, box-shadow .25s, background .25s, color .25s;
+      letter-spacing: .02em;
+    }
+    .btn-primary {
+      background: var(--terracotta);
+      color: #fff;
+      box-shadow: 0 14px 30px -16px rgba(182,74,58,.6);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ivory);
+      border: 1px solid rgba(250,248,243,.4);
+    }
+    .hero-visual {
+      position: relative;
+      min-height: 420px;
+    }
+    .hero-visual .photo {
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(24,50,74,.06), rgba(24,50,74,.72)), url('reference images/1.png');
+      background-position: center;
+      background-size: cover;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(250,248,243,.18);
+      animation: heroFloat 7s ease-in-out infinite;
+    }
+    .hero-visual .photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(24,50,74,0.1), rgba(24,50,74,0.68));
+    }
+    .hero-visual .caption {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      color: var(--ivory);
+    }
+    .hero-visual .caption .tag {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(250,248,243,.18);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .hero-visual .caption h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 2vw, 34px);
+      margin: 16px 0 10px;
+      line-height: 1.1;
+    }
+    .hero-visual .caption p {
+      margin: 0;
+      color: rgba(250,248,243,.82);
+      max-width: 26ch;
+    }
+
+    section { padding: 100px 0; }
+    .section-head {
+      max-width: 720px;
+      margin: 0 auto 58px;
+      text-align: center;
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 3vw, 42px);
+      color: var(--midnight);
+      margin: 14px 0 12px;
+      line-height: 1.18;
+      font-weight: 600;
+    }
+    .section-head p { color: var(--ink-2); margin: 0; }
+
+    .about-intro {
+      background: var(--mist);
+      background-image: radial-gradient(var(--sage) 1px, transparent 1.2px);
+      background-size: 14px 14px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .about-copy h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 44px);
+      color: var(--midnight);
+      margin: 16px 0 18px;
+      line-height: 1.18;
+      font-weight: 600;
+    }
+    .about-copy p {
+      color: var(--ink-2);
+      margin: 0 0 16px;
+      font-size: 15.5px;
+    }
+    .about-panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow-sm);
+      padding: 28px;
+    }
+    .about-panel h3 {
+      margin: 0 0 18px;
+      font-size: 16px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--midnight);
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .mini-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--ink);
+      font-size: 14px;
+    }
+    .mini-list li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      margin-top: 7px;
+      flex: 0 0 auto;
+    }
+
+    .company-history { background: var(--ivory); }
+    .history-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr);
+      gap: clamp(48px, 8vw, 118px);
+      align-items: start;
+    }
+    .history-anchor { position: sticky; top: 116px; }
+    .history-anchor h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 3.2vw, 46px);
+      color: var(--midnight);
+      margin: 14px 0 18px;
+      line-height: 1.14;
+      font-weight: 600;
+    }
+    .history-anchor p { color: var(--ink-2); margin: 0; }
+    .history-metric {
+      margin: 42px 0 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+    .history-metric strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(58px, 7vw, 96px);
+      line-height: .9;
+      color: var(--terracotta);
+      letter-spacing: -.04em;
+    }
+    .history-metric span {
+      display: block;
+      margin-top: 12px;
+      color: var(--midnight);
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .history-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--midnight);
+      font-size: 14px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 4px;
+    }
+    .history-link svg { transition: transform .25s ease; }
+    .history-link:hover svg { transform: translateX(5px); }
+    .timeline-track {
+      position: relative;
+      padding: 8px 0 8px 58px;
+    }
+    .timeline-track::before,
+    .timeline-progress {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 17px;
+      width: 2px;
+      border-radius: 2px;
+    }
+    .timeline-track::before { background: var(--mist); }
+    .timeline-progress {
+      bottom: auto;
+      height: 0;
+      background: var(--terracotta);
+      transition: height .2s ease-out;
+    }
+    .milestone {
+      position: relative;
+      min-height: 230px;
+      padding: 26px 30px;
+      margin-bottom: 24px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity .65s ease, transform .65s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    .milestone.in { opacity: 1; transform: none; }
+    .milestone::before {
+      content: attr(data-watermark);
+      position: absolute;
+      right: 22px;
+      top: 10px;
+      color: rgba(24,50,74,.055);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(78px, 10vw, 136px);
+      line-height: 1;
+      font-weight: 700;
+      pointer-events: none;
+    }
+    .milestone-node {
+      position: absolute;
+      left: -48px;
+      top: 36px;
+      width: 18px;
+      height: 18px;
+      border: 4px solid var(--ivory);
+      border-radius: 50%;
+      background: var(--sage);
+      box-shadow: 0 0 0 1px var(--sage);
+      transition: width .35s ease, height .35s ease, left .35s ease, top .35s ease, background .35s ease, box-shadow .35s ease;
+    }
+    .milestone.active { border-color: var(--terracotta); box-shadow: 0 14px 34px -12px rgba(182,74,58,.55); }
+    .milestone.active .milestone-node {
+      width: 26px;
+      height: 26px;
+      left: -52px;
+      top: 32px;
+      background: var(--terracotta);
+      box-shadow: 0 0 0 8px rgba(182,74,58,.14), 0 0 0 1px var(--terracotta);
+    }
+    .milestone-kicker {
+      position: relative;
+      z-index: 1;
+      color: var(--terracotta);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .milestone h3,
+    .milestone p { position: relative; z-index: 1; max-width: 34ch; }
+    .milestone h3 {
+      color: var(--midnight);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 2.4vw, 32px);
+      margin: 12px 0 10px;
+      line-height: 1.12;
+    }
+    .milestone p { color: var(--ink-2); margin: 0; font-size: 14px; }
+
+    .palette {
+      background: var(--ivory);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .swatch {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .color-block {
+      height: 112px;
+      border-bottom: 1px solid rgba(24,50,74,.08);
+    }
+    .swatch-body {
+      padding: 20px 22px 24px;
+    }
+    .swatch-body h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: var(--midnight);
+    }
+    .swatch-body .code {
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .swatch-body p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
+    .role-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--midnight);
+      margin-top: 10px;
+    }
+    .role-line::before {
+      content: "";
+      width: 8px; height: 8px; border-radius: 50%; background: var(--terracotta);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .process-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+    }
+    .process-card .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      color: var(--terracotta);
+      line-height: 1;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .process-card h3 { margin: 0 0 10px; color: var(--midnight); font-size: 18px; }
+    .process-card p { margin: 0; color: var(--ink-2); font-size: 14px; }
+
+    .connect {
+      background: var(--midnight);
+      color: var(--ivory);
+    }
+    .connect .section-head h2 { color: #fff; }
+    .connect .section-head p { color: rgba(255,255,255,.8); }
+    .connect-form {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--ivory);
+      border: 1px solid var(--gold);
+      border-radius: 22px;
+      padding: 32px;
+      background-image: radial-gradient(rgba(174,185,177,.45) 1px, transparent 1.2px);
+      background-size: 10px 10px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+    .field label {
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--midnight);
+      font-weight: 600;
+    }
+    .field input, .field textarea, .field select {
+      background: var(--ivory);
+      border: 1px solid var(--sage);
+      color: var(--midnight);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font: inherit;
+      outline: none;
+    }
+    .field textarea { min-height: 130px; resize: vertical; }
+    .submit { display: flex; justify-content: flex-end; gap: 14px; flex-wrap: wrap; }
+    .btn-gold { background: var(--gold); color: var(--midnight); }
+    .btn-gold:hover { background: var(--terracotta); color: var(--ivory); }
+
+    footer {
+      background: var(--midnight);
+      color: rgba(250,248,243,.82);
+      padding: 80px 0 28px;
+    }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    footer h5 {
+      font-size: 12.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+    footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    footer ul a { color: rgba(255,255,255,.78); font-size: 14px; }
+    footer .addr { font-size: 14px; color: rgba(255,255,255,.78); line-height: 1.7; }
+    footer .phone { display: inline-flex; align-items: center; gap: 10px; margin-top: 12px; font-weight: 600; color: #fff; }
+    .copy { border-top: 1px solid rgba(255,255,255,.1); margin-top: 48px; padding-top: 22px; text-align: center; font-size: 12.5px; color: rgba(255,255,255,.6); }
+
+    @media (max-width:960px) {
+      .hero-grid, .about-grid, .history-layout { grid-template-columns: 1fr; }
+      .history-anchor { position: relative; top: auto; }
+      .process-grid, .palette-grid, .foot-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width:640px) {
+      .nav-links { display: none; }
+      .process-grid, .palette-grid, .foot-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 22px; }
+      .hero { padding-top: 72px; }
+      .submit { justify-content: stretch; }
+      .submit .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <img src="maruti-logo.png" alt="Maruti Textiles" onerror="this.style.display='none'">
+        <span class="brand-name">Maruti Textiles</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About Us</a>
+        <a href="index.html#products">Products</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <button class="nav-cta">Request a Quote</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">About Maruti Textiles</span>
+          <h1>Built on trust, <span>driven by performance.</span></h1>
+          <p class="lead">From a focused manufacturing start to one of the region's most capable nonwoven fabric producers, Maruti Textiles continues to expand with a strong commitment to quality, consistency and customer trust.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#company">Our Story</a>
+            <a class="btn btn-ghost" href="index.html#connect">Connect With Us</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="photo">
+            <div class="caption">
+              <span class="tag">Manufacturing Since 2010</span>
+              <h3>Precision weaving into dependable performance.</h3>
+              <p>Nonwoven fabrics developed to support hygiene, agriculture, packaging and industrial applications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-intro" id="company">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <span class="eyebrow">About Us</span>
+          <h2>India's Fastest Growing Non Woven Manufacturer</h2>
+          <p>Maruti Textiles has rapidly emerged as one of India's most dynamic and trusted names in the nonwoven fabric industry. With cutting-edge manufacturing technology and an unwavering focus on quality, we create high-performance PP spunbond fabrics for healthcare, agriculture, hygiene, packaging and industrial applications.</p>
+          <p>Our growth is guided by innovation, operational efficiency and customer satisfaction. We work closely with businesses across India and beyond to deliver dependable fabric solutions that help them scale confidently in a demanding market.</p>
+        </div>
+        <aside class="about-panel">
+          <h3>Why Maruti</h3>
+          <ul class="mini-list">
+            <li>Strong manufacturing discipline with a consistent quality-first approach.</li>
+            <li>Reliable production capacity and dependable lead times for growing demands.</li>
+            <li>Flexible solutions across GSM, width, finish and application-specific requirements.</li>
+            <li>Customer-focused support from product development through delivery.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="company-history" id="company-history">
+      <div class="container history-layout">
+        <div class="history-anchor">
+          <span class="eyebrow">About Company</span>
+          <h2>Pioneering growth through innovation and expansion.</h2>
+          <p>From advanced research and development to rigorous quality control and modern infrastructure, we remain focused on delivering world-class nonwoven fabric solutions that meet evolving industry needs.</p>
+          <div class="history-metric">
+            <strong>15+</strong>
+            <span>Years of experience</span>
+          </div>
+          <a class="history-link" href="#technology">
+            Explore our capabilities
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="timeline-track" id="companyTimeline">
+          <div class="timeline-progress" aria-hidden="true"></div>
+          <article class="milestone" data-watermark="15+">
+            <span class="milestone-node" aria-hidden="true"></span>
+            <span class="milestone-kicker">Experience</span>
+            <h3>15+ years of experience</h3>
+            <p>More than a decade of disciplined manufacturing, trusted partnerships and continuous improvement in nonwoven fabrics.</p>
+          </article>
+          <article class="milestone" data-watermark="125+">
+            <span class="milestone-node" aria-hidden="true"></span>
+            <span class="milestone-kicker">People</span>
+            <h3>125+ employees</h3>
+            <p>A capable team brings technical knowledge, production discipline and responsive support to every customer relationship.</p>
+          </article>
+          <article class="milestone" data-watermark="4500+">
+            <span class="milestone-node" aria-hidden="true"></span>
+            <span class="milestone-kicker">Capacity</span>
+            <h3>4500+ metric tons / year</h3>
+            <p>Modern production infrastructure gives partners the capacity and consistency needed to plan with confidence.</p>
+          </article>
+          <article class="milestone" data-watermark="24/7">
+            <span class="milestone-node" aria-hidden="true"></span>
+            <span class="milestone-kicker">Support</span>
+            <h3>24/7 production support</h3>
+            <p>Our operations stay focused on reliable output, clear communication and steady service from order to delivery.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="technology">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Technology, Lab &amp; Quality</span>
+          <h2>All in one hub for technology, R&amp;D, laboratory and quality control.</h2>
+          <p>Our manufacturing environment combines advanced systems, testing capability and disciplined inspection to create a dependable and consistent product.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card">
+            <div class="num">01</div>
+            <h3>Cutting Edge Technology</h3>
+            <p>Precision systems, smart controls and process monitoring ensure clean, reliable and efficient production.</p>
+          </article>
+          <article class="process-card">
+            <div class="num">02</div>
+            <h3>R&amp;D and Laboratory</h3>
+            <p>Continuous testing and performance analysis support product refinement and better material outcomes.</p>
+          </article>
+          <article class="process-card">
+            <div class="num">03</div>
+            <h3>Quality Control</h3>
+            <p>Every stage is reviewed against strict standards to deliver dependable output across every batch.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="connect" id="connect">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" style="color:var(--gold)">Let's Connect</span>
+          <h2>Talk to our team — or request a sample kit.</h2>
+          <p>Share a brief about your application and we'll be in touch within one business day.</p>
+        </div>
+        <form class="connect-form" action="#" onsubmit="event.preventDefault(); this.reset(); alert('Thanks — we\'ll be in touch.');">
+          <div class="form-row">
+            <div class="field">
+              <label>Full Name</label>
+              <input type="text" placeholder="Your name" required>
+            </div>
+            <div class="field">
+              <label>Company</label>
+              <input type="text" placeholder="Company name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label>Email</label>
+              <input type="email" placeholder="you@company.com" required>
+            </div>
+            <div class="field">
+              <label>Phone</label>
+              <input type="tel" placeholder="+91">
+            </div>
+          </div>
+          <div class="field">
+            <label>Interested In</label>
+            <select>
+              <option>Plain Non Woven Fabric</option>
+              <option>Embossed Non Woven Fabric</option>
+              <option>Printed Non Woven Fabric</option>
+              <option>Laminated Non Woven Fabric</option>
+              <option>UV Treated Non Woven Fabric</option>
+              <option>Slitted Non Woven Fabric</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Message</label>
+            <textarea placeholder="Tell us about GSM, width, quantity and application"></textarea>
+          </div>
+          <div class="submit">
+            <button type="button" class="btn btn-gold">Request a Sample Kit</button>
+            <button type="submit" class="btn btn-primary">Request a Quote</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <div class="brand" style="margin-bottom:14px"><span class="brand-name" style="font-size:22px;color:#fff">Maruti Textiles</span></div>
+          <div class="addr">Plot No. XX, Industrial Area,<br>North India — 1100XX</div>
+          <div class="phone">📞 +91 98XXX XXXXX</div>
+        </div>
+        <div>
+          <h5>Products</h5>
+          <ul>
+            <li><a href="index.html#products">Plain Non Woven</a></li>
+            <li><a href="index.html#products">Embossed Non Woven</a></li>
+            <li><a href="index.html#products">Printed Non Woven</a></li>
+            <li><a href="index.html#products">Laminated Non Woven</a></li>
+            <li><a href="index.html#products">UV Treated Non Woven</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html#company">Our Journey</a></li>
+            <li><a href="index.html#services">Technology &amp; Lab</a></li>
+            <li><a href="index.html#products">Products</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Get in Touch</h5>
+          <ul>
+            <li><a href="index.html#connect">Request a Quote</a></li>
+            <li><a href="index.html#connect">Sample Kit</a></li>
+            <li><a href="index.html#connect">Become a Distributor</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copy">© 2026 Maruti Textiles. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const timeline = document.getElementById('companyTimeline');
+    const progress = timeline.querySelector('.timeline-progress');
+    const milestones = Array.from(timeline.querySelectorAll('.milestone'));
+    let progressFrame = 0;
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    milestones.forEach((milestone, index) => {
+      milestone.style.transitionDelay = `${index * 80}ms`;
+      revealObserver.observe(milestone);
+    });
+
+    function updateTimeline() {
+      progressFrame = 0;
+      const bounds = timeline.getBoundingClientRect();
+      const viewportCenter = window.innerHeight * 0.5;
+      const trackHeight = timeline.offsetHeight;
+      const progressHeight = Math.max(0, Math.min(trackHeight, viewportCenter - bounds.top));
+      progress.style.height = `${progressHeight}px`;
+
+      let closest = 0;
+      let closestDistance = Infinity;
+      milestones.forEach((milestone, index) => {
+        const rect = milestone.getBoundingClientRect();
+        const distance = Math.abs((rect.top + rect.height * 0.18) - viewportCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closest = index;
+        }
+      });
+      milestones.forEach((milestone, index) => milestone.classList.toggle('active', index === closest));
+    }
+
+    function requestTimelineUpdate() {
+      if (!progressFrame) progressFrame = requestAnimationFrame(updateTimeline);
+    }
+
+    window.addEventListener('scroll', requestTimelineUpdate, { passive: true });
+    window.addEventListener('resize', requestTimelineUpdate);
+    document.querySelectorAll('a[href="index.html#products"]').forEach((link) => link.href = 'products.html');
+    updateTimeline();
+  </script>
+</body>
+</html>
