@@ -9,18 +9,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --midnight: #18324A;
-      --ivory: #FAF8F3;
-      --terracotta: #B64A3A;
-      --mist: #DDE8EE;
-      --sage: #AEB9B1;
-      --gold: #C9A66B;
-      --ink: #18324A;
-      --ink-2: #AEB9B1;
+      --midnight: #0F1B2D;
+      --ivory: #FFFFFF;
+      --terracotta: #D71920;
+      --mist: #E6EEF5;
+      --sage: #C7CCD1;
+      --gold: #DDBE8C;
+      --ink: #0F1B2D;
+      --ink-2: #C7CCD1;
       --line: rgba(24, 50, 74, 0.14);
       --line-2: rgba(24, 50, 74, 0.28);
-      --shadow-sm: 0 8px 24px -16px rgba(24,50,74,.25);
-      --shadow: 0 24px 60px -28px rgba(24,50,74,.35);
+      --shadow-sm: 0 8px 24px -16px rgba(15,27,45,.25);
+      --shadow: 0 24px 60px -28px rgba(15,27,45,.35);
     }
 
     * { box-sizing: border-box; }
@@ -41,7 +41,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(250,248,243,.82);
+      background: rgba(255,255,255,.82);
       backdrop-filter: saturate(180%) blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -94,7 +94,7 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, var(--midnight), rgba(24,50,74,.96));
+      background: linear-gradient(135deg, var(--midnight), rgba(15,27,45,.96));
       color: var(--ivory);
       padding: 92px 0 72px;
     }
@@ -131,7 +131,7 @@
     .hero h1 span { color: var(--terracotta); }
     .hero p.lead {
       font-size: 17px;
-      color: rgba(250,248,243,.82);
+      color: rgba(255,255,255,.82);
       max-width: 540px;
       margin: 0;
     }
@@ -157,14 +157,14 @@
     }
     .btn-primary {
       background: var(--terracotta);
-      color: #fff;
-      box-shadow: 0 14px 30px -16px rgba(182,74,58,.6);
+      color: #FFFFFF;
+      box-shadow: 0 14px 30px -16px rgba(215,25,32,.6);
     }
     .btn-primary:hover { transform: translateY(-2px); }
     .btn-ghost {
       background: transparent;
       color: var(--ivory);
-      border: 1px solid rgba(250,248,243,.4);
+      border: 1px solid rgba(255,255,255,.4);
     }
     .hero-visual {
       position: relative;
@@ -175,18 +175,18 @@
       inset: 0;
       border-radius: 26px;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(24,50,74,.06), rgba(24,50,74,.72)), url('reference images/1.png');
+      background: linear-gradient(180deg, rgba(15,27,45,.06), rgba(15,27,45,.72)), url('reference images/1.png');
       background-position: center;
       background-size: cover;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(250,248,243,.18);
+      border: 1px solid rgba(255,255,255,.18);
       animation: heroFloat 7s ease-in-out infinite;
     }
     .hero-visual .photo::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(24,50,74,0.1), rgba(24,50,74,0.68));
+      background: linear-gradient(135deg, rgba(15,27,45,0.1), rgba(15,27,45,0.68));
     }
     .hero-visual .caption {
       position: relative;
@@ -203,7 +203,7 @@
       align-self: flex-start;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(250,248,243,.18);
+      background: rgba(255,255,255,.18);
       font-size: 10px;
       letter-spacing: .16em;
       text-transform: uppercase;
@@ -217,7 +217,7 @@
     }
     .hero-visual .caption p {
       margin: 0;
-      color: rgba(250,248,243,.82);
+      color: rgba(255,255,255,.82);
       max-width: 26ch;
     }
 
@@ -262,7 +262,7 @@
       font-size: 15.5px;
     }
     .about-panel {
-      background: #fff;
+      background: #FFFFFF;
       border: 1px solid var(--line);
       border-radius: 22px;
       box-shadow: var(--shadow-sm);
@@ -376,7 +376,7 @@
       min-height: 230px;
       padding: 26px 30px;
       margin-bottom: 24px;
-      background: #fff;
+      background: #FFFFFF;
       border: 1px solid var(--line);
       border-radius: 20px;
       overflow: hidden;
@@ -390,7 +390,7 @@
       position: absolute;
       right: 22px;
       top: 10px;
-      color: rgba(24,50,74,.055);
+      color: rgba(15,27,45,.055);
       font-family: 'Playfair Display', serif;
       font-size: clamp(78px, 10vw, 136px);
       line-height: 1;
@@ -409,14 +409,14 @@
       box-shadow: 0 0 0 1px var(--sage);
       transition: width .35s ease, height .35s ease, left .35s ease, top .35s ease, background .35s ease, box-shadow .35s ease;
     }
-    .milestone.active { border-color: var(--terracotta); box-shadow: 0 14px 34px -12px rgba(182,74,58,.55); }
+    .milestone.active { border-color: var(--terracotta); box-shadow: 0 14px 34px -12px rgba(215,25,32,.55); }
     .milestone.active .milestone-node {
       width: 26px;
       height: 26px;
       left: -52px;
       top: 32px;
       background: var(--terracotta);
-      box-shadow: 0 0 0 8px rgba(182,74,58,.14), 0 0 0 1px var(--terracotta);
+      box-shadow: 0 0 0 8px rgba(215,25,32,.14), 0 0 0 1px var(--terracotta);
     }
     .milestone-kicker {
       position: relative;
@@ -449,7 +449,7 @@
       gap: 22px;
     }
     .swatch {
-      background: #fff;
+      background: #FFFFFF;
       border: 1px solid var(--line);
       border-radius: 18px;
       overflow: hidden;
@@ -457,7 +457,7 @@
     }
     .color-block {
       height: 112px;
-      border-bottom: 1px solid rgba(24,50,74,.08);
+      border-bottom: 1px solid rgba(15,27,45,.08);
     }
     .swatch-body {
       padding: 20px 22px 24px;
@@ -504,7 +504,7 @@
       gap: 22px;
     }
     .process-card {
-      background: #fff;
+      background: #FFFFFF;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 30px;
@@ -525,7 +525,7 @@
       background: var(--midnight);
       color: var(--ivory);
     }
-    .connect .section-head h2 { color: #fff; }
+    .connect .section-head h2 { color: #FFFFFF; }
     .connect .section-head p { color: rgba(255,255,255,.8); }
     .connect-form {
       max-width: 780px;
@@ -534,7 +534,7 @@
       border: 1px solid var(--gold);
       border-radius: 22px;
       padding: 32px;
-      background-image: radial-gradient(rgba(174,185,177,.45) 1px, transparent 1.2px);
+      background-image: radial-gradient(rgba(199,204,209,.45) 1px, transparent 1.2px);
       background-size: 10px 10px;
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -562,7 +562,7 @@
 
     footer {
       background: var(--midnight);
-      color: rgba(250,248,243,.82);
+      color: rgba(255,255,255,.82);
       padding: 80px 0 28px;
     }
     .foot-grid {
@@ -581,7 +581,7 @@
     footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
     footer ul a { color: rgba(255,255,255,.78); font-size: 14px; }
     footer .addr { font-size: 14px; color: rgba(255,255,255,.78); line-height: 1.7; }
-    footer .phone { display: inline-flex; align-items: center; gap: 10px; margin-top: 12px; font-weight: 600; color: #fff; }
+    footer .phone { display: inline-flex; align-items: center; gap: 10px; margin-top: 12px; font-weight: 600; color: #FFFFFF; }
     .copy { border-top: 1px solid rgba(255,255,255,.1); margin-top: 48px; padding-top: 22px; text-align: center; font-size: 12.5px; color: rgba(255,255,255,.6); }
 
     @media (max-width:960px) {
@@ -790,7 +790,7 @@
     <div class="container">
       <div class="foot-grid">
         <div>
-          <div class="brand" style="margin-bottom:14px"><span class="brand-name" style="font-size:22px;color:#fff">Maruti Textiles</span></div>
+          <div class="brand" style="margin-bottom:14px"><span class="brand-name" style="font-size:22px;color:#FFFFFF">Maruti Textiles</span></div>
           <div class="addr">Plot No. XX, Industrial Area,<br>North India — 1100XX</div>
           <div class="phone">📞 +91 98XXX XXXXX</div>
         </div>
